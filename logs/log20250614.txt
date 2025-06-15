@@ -1,0 +1,35 @@
+2025-06-14 12:32:40.338 -05:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2025-06-14 12:32:40.380 -05:00 [DBG] Hosting starting
+2025-06-14 12:32:40.397 -05:00 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2025-06-14 12:32:40.398 -05:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2025-06-14 12:32:40.406 -05:00 [INF] Now listening on: http://localhost:5000
+2025-06-14 12:32:40.406 -05:00 [DBG] Loaded hosting startup assembly CourseraWebApi
+2025-06-14 12:32:40.406 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-14 12:32:40.406 -05:00 [INF] Hosting environment: Development
+2025-06-14 12:32:40.406 -05:00 [INF] Content root path: C:\dev\CourseraWebApi\CourseraWebApi
+2025-06-14 12:32:40.407 -05:00 [DBG] Hosting started
+2025-06-14 12:33:20.646 -05:00 [DBG] Connection id "0HNDBD677AS8I" accepted.
+2025-06-14 12:33:20.647 -05:00 [DBG] Connection id "0HNDBD677AS8I" started.
+2025-06-14 12:33:20.661 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/products - null null
+2025-06-14 12:33:20.680 -05:00 [DBG] 1 candidate(s) found for the request path '/api/products'
+2025-06-14 12:33:20.683 -05:00 [DBG] Endpoint 'CourseraWebApi.Controllers.ProductsController.Get (CourseraWebApi)' with route pattern 'api/products' is valid for the request path '/api/products'
+2025-06-14 12:33:20.684 -05:00 [DBG] Request matched endpoint 'CourseraWebApi.Controllers.ProductsController.Get (CourseraWebApi)'
+2025-06-14 12:33:20.691 -05:00 [INF] Executing endpoint 'CourseraWebApi.Controllers.ProductsController.Get (CourseraWebApi)'
+2025-06-14 12:33:20.702 -05:00 [INF] Route matched with {action = "Get", controller = "Products"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[Product]] Get() on controller CourseraWebApi.Controllers.ProductsController (CourseraWebApi).
+2025-06-14 12:33:20.704 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2025-06-14 12:33:20.704 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2025-06-14 12:33:20.705 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2025-06-14 12:33:20.705 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2025-06-14 12:33:20.705 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2025-06-14 12:33:20.707 -05:00 [DBG] Executing controller factory for controller CourseraWebApi.Controllers.ProductsController (CourseraWebApi)
+2025-06-14 12:33:20.707 -05:00 [DBG] Executed controller factory for controller CourseraWebApi.Controllers.ProductsController (CourseraWebApi)
+2025-06-14 12:33:20.709 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2025-06-14 12:33:20.716 -05:00 [DBG] No information found on request to perform content negotiation.
+2025-06-14 12:33:20.716 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2025-06-14 12:33:20.716 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2025-06-14 12:33:20.717 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2025-06-14 12:33:20.717 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Product, CourseraWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-14 12:33:20.749 -05:00 [INF] Executed action CourseraWebApi.Controllers.ProductsController.Get (CourseraWebApi) in 40.6735ms
+2025-06-14 12:33:20.755 -05:00 [INF] Executed endpoint 'CourseraWebApi.Controllers.ProductsController.Get (CourseraWebApi)'
+2025-06-14 12:33:20.755 -05:00 [DBG] Connection id "0HNDBD677AS8I" completed keep alive response.
+2025-06-14 12:33:20.756 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/products - 200 null application/json; charset=utf-8 96.8104ms
