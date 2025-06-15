@@ -1,10 +1,11 @@
 using Serilog;
-
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
+// configure Serilog
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
@@ -12,17 +13,20 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 builder.Host.UseSerilog();
 
-builder.Services.AddOpenApi();
-
+// add services
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IMyService, MyService>();
+builder.Services.AddSingleton<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
 }
 else
 {
@@ -30,36 +34,27 @@ else
     app.UseHsts();
 }
 
+// Example middleware using IMyService
 app.Use(async (context, next) =>
 {
     var service = context.RequestServices.GetRequiredService<IMyService>();
-    service.LogCreation("1st request to the service");
+    service.LogCreation("Middleware 1");
     await next();
 });
 
 app.Use(async (context, next) =>
 {
     var service = context.RequestServices.GetRequiredService<IMyService>();
-    service.LogCreation("2nd request to the service");
+    service.LogCreation("Middleware 2");
     await next();
 });
+
+app.MapControllers();
 
 app.MapGet("/", (IMyService service) =>
 {
-    service.LogCreation("Root");
-    return Results.Ok("Check the logs for service creation messages.");
+    service.LogCreation("Root Endpoint");
+    return Results.Ok("Hello from .NET 10 with Serilog & Swagger!");
 });
-
-try
-{
-    app.MapControllers();
-}
-catch (Exception ex)
-{
-    Console.WriteLine($"An error occurred while mapping controllers: {ex.Message}");
-    Console.WriteLine(ex.StackTrace);
-    throw;
-}
-
 
 app.Run();

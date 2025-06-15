@@ -3,9 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace CourseraWebApi.Controllers
 {
     [ApiController]
+    [Route("[controller]")]
     public class ProductsController : ControllerBase
     {
-        public List<Product> Products { get; set; } = new List<Product>() 
+        public List<Product> Products { get; set; } = new List<Product>()
         {
             new Product(1, "Laptop", "High performance laptop", 1200.00m),
             new Product(2, "Smartphone", "Latest model smartphone", 800.00m),
