@@ -1,6 +1,6 @@
-public class UserRepository : IUserRepository
+public class UserRepository() : IUserRepository
 {
-    private readonly List<User> _users = new List<User>
+    private List<User> _users = new List<User>
     {
         new User(1, "Alice", "alice@domain.com"),
         new User(2, "Bob", "bob@domain.com"),

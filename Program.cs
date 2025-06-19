@@ -2,6 +2,7 @@ using Serilog;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CourseraWebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IMyService, MyService>();
 builder.Services.AddSingleton<IUserRepository, UserRepository>();
+builder.Services.AddSingleton<IProductsRepository, ProductsRepository>();
 
 var app = builder.Build();
 
@@ -56,5 +58,7 @@ app.MapGet("/", (IMyService service) =>
     service.LogCreation("Root Endpoint");
     return Results.Ok("Hello from .NET 10 with Serilog & Swagger!");
 });
+
+app.UseRequestResponseLogging();
 
 app.Run();
