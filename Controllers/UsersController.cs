@@ -2,10 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CourseraWebApi.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class UsersController(IUserRepository userRepository) : ControllerBase
     {
         [HttpGet]
-        [Route("api/users")]
         public ActionResult<List<User>> Get()
         {
             var users = userRepository.GetAll();
@@ -17,7 +18,7 @@ namespace CourseraWebApi.Controllers
         }
 
         [HttpGet]
-        [Route("api/users/{id:int}")]
+        [Route("{id:int}")]
         public ActionResult<User> GetById(int id)
         {
             var user = userRepository.GetById(id);
@@ -29,7 +30,6 @@ namespace CourseraWebApi.Controllers
         }
 
         [HttpPost]
-        [Route("api/users")]
         public ActionResult<string> Post([FromBody] User user)
         {
             if (user == null)
@@ -41,7 +41,6 @@ namespace CourseraWebApi.Controllers
         }
 
         [HttpPut]
-        [Route("api/users/{id:int}")]
         public ActionResult<string> Put(int id, [FromBody] User user)
         {
             if (user == null)
@@ -60,7 +59,6 @@ namespace CourseraWebApi.Controllers
         }
 
         [HttpDelete]
-        [Route("api/users/{id:int}")]
         public ActionResult<string> Delete(int id)
         {
             try

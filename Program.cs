@@ -33,8 +33,11 @@ if (app.Environment.IsDevelopment())
 
 // add custom middleware
 app.UseMiddleware<ErrorHandlingMiddleware>();
-app.UseAuthorizationMiddleware();
-app.UseAuthorization();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseAuthorizationMiddleware();
+    app.UseAuthorization();
+}
 app.UseRequestResponseLogging();
 
 app.UseHsts();
