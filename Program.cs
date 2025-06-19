@@ -30,35 +30,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
 }
-else
-{
-    app.UseExceptionHandler("/error");
-    app.UseHsts();
-}
 
-// Example middleware using IMyService
-app.Use(async (context, next) =>
-{
-    var service = context.RequestServices.GetRequiredService<IMyService>();
-    service.LogCreation("Middleware 1");
-    await next();
-});
-
-app.Use(async (context, next) =>
-{
-    var service = context.RequestServices.GetRequiredService<IMyService>();
-    service.LogCreation("Middleware 2");
-    await next();
-});
-
-app.MapControllers();
-
-app.MapGet("/", (IMyService service) =>
-{
-    service.LogCreation("Root Endpoint");
-    return Results.Ok("Hello from .NET 10 with Serilog & Swagger!");
-});
-
+// add custom middleware
+app.UseMiddleware<ErrorHandlingMiddleware>();
+app.UseAuthorizationMiddleware();
+app.UseAuthorization();
 app.UseRequestResponseLogging();
+
+app.UseHsts();
+app.MapControllers();
 
 app.Run();
